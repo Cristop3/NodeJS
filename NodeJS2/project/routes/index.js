@@ -3,6 +3,8 @@ var router = express.Router(); //创建模块化安装路径的处理程序
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  //调用模板引擎 并将产生的页面直接返回给客户端
+  //接收两个参数：“模板名称即在views目录下的模板文件名” 和 “要传递给模板的数”
   res.render('index', { title: 'Express' });
 });
 
@@ -30,5 +32,7 @@ router.get('/ljx/:id',function(req,res,next){
 router.get('/ljx/:id',function(req,res,next){
   res.send('get参数传递的不是0')
 })
+
+
 
 module.exports = router;//返回了由express.Router()实例化的对象 且其中包含了一个get的方法
