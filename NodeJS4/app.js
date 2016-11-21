@@ -18,6 +18,11 @@ var post = require('./routes/post');//发布信息
 
 var app = express();
 
+/**20161121 实验添加mongoDB数据库 */
+var mongoose = require('./mongoose');//引入mongoose模块
+var config = require('./settings');
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
