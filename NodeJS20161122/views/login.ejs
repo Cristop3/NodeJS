@@ -1,0 +1,52 @@
+<!-- 这个是登录页面的模板文件 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        登录页面
+    </title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+        body {
+            padding: 60px 0px 0px 40px;
+            background-color: #7fcf8a;
+        }
+        
+        h2 {
+            color: white
+        }
+        
+        ._label {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .center {
+            margin: 0 auto;
+            width: 100%;
+            text-align: center
+        }
+    </style>
+</head>
+
+<body>
+    <form id="regForm" method="post" action="doLogin">
+        <h2>欢迎来到HelloNodeJS 登录页面</h2>
+        <hr/>
+        <div class='container'>
+            <div class='center'>
+                <label for="username" class='_label'>用户</label>
+                <input id="username" type="text" placeholder="输入登录用户名" name="username" />
+                <br/>
+                <label for="password" class='_label'>密码</label>
+                <input id="password" type="password" placeholder="用户密码" name="password" />
+                <br/>
+                <button type="submit" class='btn btn-primary'>登录</button>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
