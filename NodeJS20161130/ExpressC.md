@@ -59,4 +59,4 @@ Express 使用中间件 笔记 20161129晚
     ⑨res.sendStatus() -- 设置响应状态代码，并将其以字符串形式作为响应体的一部分发送
 
 六、express.Router():
-    可使用 express.Router 类创建模块化、可挂载的路由句柄。Router 实例是一个完整的中间件和路由系统，因此常称其为一个 “mini-app”。
+    可使用 express.Router 类创建模块化、可挂载的路由句柄。Router 实例是一个完整的中间件和路由系统，因此常称其为一个 “mini-app”。 
