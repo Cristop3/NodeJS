@@ -60,3 +60,19 @@ Express 使用中间件 笔记 20161129晚
 
 六、express.Router():
     可使用 express.Router 类创建模块化、可挂载的路由句柄。Router 实例是一个完整的中间件和路由系统，因此常称其为一个 “mini-app”。 
+
+
+
+使用在MongoDB shell下使用MongoDB 20161201晚
+一、何为MongoDB:
+    MongoDB 是一种非关系型数据库。经典的关系型数据库有三层结构，database->table->record，
+    而 mongodb 与相对应的则是 datebase->collection->document
+
+二、MongoDB命令行操作
+    ①在MongoDB安装文件bin目录下启动shell终端 键入"$ mongo"
+    ②查看数据库："$ show dbs"
+    ③使用数据库："$ use 你所要使用的数据库名称"
+    ④查看当前数据库下的表："$ show collections"
+    ⑤创建数据库表(先使用数据库)："$ db.createCollection('你所要创建的数据库表名')"
+    ⑥删除数据库表(先使用数据库)："$ db.mongodb.drop()"
+    ⑦删除数据库(先使用数据库)："$ db.dropDatabase()"
