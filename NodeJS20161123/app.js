@@ -6,6 +6,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+/**20161202*/
+  //导入mongoose模块
+var mongoose = require('mongoose');
+  //创建数据库连接并连接本地数据库
+mongoose.connect('mongodb://localhost/ljxin')
+
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 

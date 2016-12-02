@@ -16,6 +16,14 @@
  * 
  */
 var express = require('express');
+
+/**20161202 */
+//导入mongoose模块
+var mongoose = require('mongoose');
+
+//导入数据模型模块
+var Users = require('../model/users');
+
 var router = express.Router();
 
 /* GET users listing. */
@@ -26,11 +34,21 @@ var router = express.Router();
  * 且为匹配当前文件的根路径请求
  */
 router.get('/', function(req, res, next) {
-  //res.send('respond with a resource');
+  res.send('respond with a resource hello world ljxin');
   //res.render('index', { title: 'LJXIN' });
   //res.render('error',{message:'老子不相信'})
-  res.render('hello',{title:'ljiaxin'});
+  //res.render('hello',{title:'ljiaxin'});
 });
+
+//再定义一个路由中间件
+router.get('/all',function(req,res,next){
+    Users.fetch(function(err, users){
+      if(err){
+        console.log(err);
+      }
+      res.render('users',{title:'用户列表测试',users:users})
+    })
+})
 
 
 /**
