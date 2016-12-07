@@ -13,8 +13,8 @@
       background-color: #c6e8dd
     }
     
-    .myUl {.
-      width: 100%
+    .myUl {
+      . width: 100%
     }
     
     .myUl li {
@@ -24,7 +24,8 @@
       background-color: #D6E8FA;
       list-style-type: none;
       float: left;
-      min-height: 350px
+      min-height: 350px;
+      margin-bottom: 10px;
     }
     
     .myUl li p {
@@ -32,13 +33,21 @@
       font-size: 25px;
       font-weight: bold;
     }
-
-    .myUl li span{
-      text-align:left
+    
+    .myUl li span {
+      text-align: left
     }
     
     .myUl li label {
-      text-indent: 20px;line-height:20px;font-family:'簡體'
+      text-indent: 20px;
+      line-height: 20px;
+      font-family: '簡體'
+    }
+    
+    .message {
+      width: 250px;
+      height: 100px;
+      border: 1px solid blue;
     }
   </style>
 </head>
@@ -76,8 +85,18 @@
           <p>皆平等</p>
           <img src='images/images.jpg' />
         </li>
+
+        <% for(var i=0; i<mess.length; i++) { %>
+          <li>
+            <p><%= mess[i].title %></p>
+            <label>
+              <%= mess[i].content %>
+            </label>
+          </li>
+          <% } %>
       </ul>
     </div>
+    <hr />
   </container>
 </body>
 
