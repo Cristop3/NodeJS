@@ -13,6 +13,37 @@
             padding: 60px 0px 0px 40px;
             background-color: #79cece;
         }
+        
+        .myUl {
+            . width: 100%
+        }
+        
+        .myUl li {
+            text-align: center;
+            width: 32%;
+            margin-right: 10px;
+            background-color: #D6E8FA;
+            list-style-type: none;
+            float: left;
+            min-height: 350px;
+            margin-bottom: 10px;
+        }
+        
+        .myUl li p {
+            color: #000000;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        
+        .myUl li span {
+            text-align: left
+        }
+        
+        .myUl li label {
+            text-indent: 20px;
+            line-height: 20px;
+            font-family: '簡體'
+        }
     </style>
 </head>
 
@@ -22,6 +53,7 @@
         <hr/>
         <h3><span>我的用户名是：<%= username %></span></h3>
     </div>
+    <hr />
     <div class='container'>
         <form method='post' class='form-horizontal' role='form' action='/publish'>
             <input type="text" name="title" class="form-control" placeholder="标题">
@@ -29,6 +61,22 @@
             <input type="submit" class="btn btn-primary" value="提交">
             <input type="reset" class="btn btn-default" value="重置">
         </form>
+        <h5>我所发布的消息</h5>
+        <hr/>
+        <div class='container'>
+            <ul class='myUl'>
+                <% mess.forEach(function(item,index){ %>
+                    <li>
+                        <p>
+                            <%= item.title %>
+                        </p>
+                        <label>
+              <%= item.content %>
+            </label>
+                    </li>
+                    <% }) %>
+            </ul>
+        </div>
     </div>
 </body>
 

@@ -36,6 +36,13 @@ service.finding = function(cb){
     })
 }
 
+//获取自己所发布的消息
+service.findingById = function(uid,cb){
+    model.message.findById(uid,function(err,docs){
+        cb(err,docs)
+    })
+}
+
 
 //用户发布信息保存
 service.publish = function(messObj){

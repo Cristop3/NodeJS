@@ -9,10 +9,12 @@ var service = require('../service/service');
 /*路由中间件之主页*/
 router.get('/', function (req, res, next) {
   service.finding(function (err, docs) {
-    //渲染主页
-    res.render('index',{mess:docs});
-  })
-  //res.render('index');
+      //渲染主页
+      res.render('index', {
+        mess: docs
+      });
+    })
+    //res.render('index');
 });
 
 /*路由中间件之get登录 */
@@ -57,9 +59,24 @@ router.post('/register', function (req, res, next) {
 
 /**路由中间件之get用户页 */
 router.get('/user', function (req, res, next) {
-  res.render('user', {
-    username: req.session.user
+  //session中获取用户ID
+  var id = req.session.userID;
+  //查询当前用户所发布的信息
+  service.findingById(id,function (err, docs) {
+    if (docs.length == '') {
+      res.render('user', {
+        username: req.session.user,
+        mess: {}
+      })
+    } else {
+      res.render('user', {
+        username: req.session.user,
+        mess:docs
+      })
+    }
+
   })
+
 });
 
 /**路由中间件之post发布消息 */
