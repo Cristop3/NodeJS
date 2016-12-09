@@ -35,6 +35,8 @@ router.post('/login', function (req, res, next) {
       //将用户名和用户ID写入session当中
       req.session.user = docs[0].username;
       req.session.userID = docs[0]['_id'];
+      //console.log(docs[0])
+      //console.log('当前存入session中用户id为'+req.session.userID)
       //找到数据 则跳到用户主页
       res.redirect('./user')
         //res.render('user',{info:docs[0]});
@@ -60,13 +62,14 @@ router.post('/register', function (req, res, next) {
 /**路由中间件之get用户页 */
 router.get('/user', function (req, res, next) {
   //session中获取用户ID
+  //console.log('用户界面下获取用户id为：'+req.session.userID);
   var id = req.session.userID;
   //查询当前用户所发布的信息
   service.findingById(id,function (err, docs) {
     if (docs.length == '') {
       res.render('user', {
         username: req.session.user,
-        mess: {}
+        mess: ""
       })
     } else {
       res.render('user', {
@@ -82,11 +85,42 @@ router.get('/user', function (req, res, next) {
 /**路由中间件之post发布消息 */
 router.post('/publish', function (req, res, next) {
   var obj = req.body;
+  //console.log('发布消息获取session中userID为'+req.session.userID);
   obj.userID = req.session.userID;
   service.publish(obj);
 
   //跳转到主页
   res.redirect('/');
+})
+
+/**路由中间件之get删除消息 */
+router.get('/delete',function(req, res, next){
+  //获取要删除的数据id
+  var id = req.query.id;
+  service.delete(id);
+  res.redirect('/user')
+})
+
+/**路由中间件之get修改消息 */
+router.get('/update',function(req, res, next){
+  //获取消息id
+  var messID = req.query.id;
+  
+  service.findMess(messID,function(err,docs){
+    res.render('update',{
+      mess:docs
+    })
+  })
+})
+
+/**路由中间件之post修改消息 */
+router.post('/update',function(req, res, next){
+  var _update = {
+    title:req.body.title,
+    content:req.body.content
+  }
+  service.update(req.body.id,_update);
+  res.redirect('/')
 })
 
 module.exports = router;

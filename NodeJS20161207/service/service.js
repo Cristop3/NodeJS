@@ -38,7 +38,9 @@ service.finding = function(cb){
 
 //获取自己所发布的消息
 service.findingById = function(uid,cb){
-    model.message.findById(uid,function(err,docs){
+    console.log('传过来的用户ID为：'+uid);
+    model.message.find({userID:{"$in":[uid]}},function(err,docs){
+        console.log('查询到的消息为：'+docs)
         cb(err,docs)
     })
 }
@@ -53,6 +55,29 @@ service.publish = function(messObj){
         userID:messObj.userID
     })
     messOne.save();
+}
+
+//删除用户自己所发布的消息
+service.delete = function(id){
+    console.log('要删除的消息id为：'+id);
+    model.message.findByIdAndRemove(id,function(err){
+        if (err) throw err;
+    })
+}
+
+//查询出指定的修改消息
+service.findMess = function(messId,cb){
+    model.message.findById(messId,function(err,docs){
+        cb(err,docs);
+    })
+}
+
+//用户更新自己所发布的消息
+service.update = function(messID,_update){
+    console.log('需要更新的消息ID为：'+messID)
+    model.message.findByIdAndUpdate(messID,_update,function(err){
+        if (err) throw err;
+    })
 }
 
 //导出sercive对象

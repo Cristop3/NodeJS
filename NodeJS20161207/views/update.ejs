@@ -1,0 +1,66 @@
+<!-- 这个是修改消息的模板文件 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        修改发布消息页面
+    </title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+        body {
+            padding: 60px 0px 0px 40px;
+            background-color: #23fefe;
+        }
+        
+        .myUl {
+            . width: 100%
+        }
+        
+        .myUl li {
+            text-align: center;
+            width: 32%;
+            margin-right: 10px;
+            background-color: #D6E8FA;
+            list-style-type: none;
+            float: left;
+           
+            margin-bottom: 10px;
+        }
+        
+        .myUl li p {
+            color: #000000;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        
+        .myUl li span {
+            text-align: left
+        }
+        
+        .myUl li label {
+            text-indent: 20px;
+            line-height: 20px;
+            font-family: '簡體'
+        }
+    </style>
+</head>
+
+<body>
+    <div class='container'>
+        <h2>欢迎来到HelloNodeJS 用户页面</h2>
+        <hr/>
+    </div>
+    <hr />
+    <div class='container'>
+        <form method='post' class='form-horizontal' role='form' action='/update'>
+            <input type='text' name='id' value='<%= mess["_id"]%>' hidden />
+            <input type="text" name="title" class="form-control" name='title' value="<%= mess.title%>" >
+            <textarea name="content" class="form-control" rows="5" name='content'><%= mess.content%></textarea>
+            <input type="submit" class="btn btn-primary" value="提交">
+        </form>
+    </div>
+</body>
+
+</html>

@@ -25,7 +25,7 @@
             background-color: #D6E8FA;
             list-style-type: none;
             float: left;
-            min-height: 350px;
+           
             margin-bottom: 10px;
         }
         
@@ -65,16 +65,23 @@
         <hr/>
         <div class='container'>
             <ul class='myUl'>
-                <% mess.forEach(function(item,index){ %>
-                    <li>
-                        <p>
-                            <%= item.title %>
-                        </p>
-                        <label>
-              <%= item.content %>
-            </label>
-                    </li>
+                    <% if(mess != ''){ %>
+                    <%  mess.forEach(function(item,index){ %>
+                        <li>
+                            <p>
+                                <%= item.title %>
+                            </p>
+                            <label>
+                                <%= item.content %>
+                            </label>
+                            <p>
+                                <a href='./delete?id=<%= item.id%>' class='btn btn-danger'>删除</a>
+                                <a href='./update?id=<%= item.id%>' class='btn btn-info'>修改</a>
+                            </p>
+                        </li>
                     <% }) %>
+                    <%}%>
+
             </ul>
         </div>
     </div>

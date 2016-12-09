@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret:'ljxin',
   cookie:{
-    maxAge:30*1000
+    maxAge:300*1000
   },
   resave:true,
   saveUninitialized:true
